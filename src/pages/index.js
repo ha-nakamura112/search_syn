@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 
 function Home() {
   const server = 'https://search-syn.vercel.app/';
-
-  
+   
   const [ userInput, setUserInput] = useState('');
   const [ parsedResponse, setparsedResponse ] = useState('');
 

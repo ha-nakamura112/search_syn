@@ -18,7 +18,7 @@ export default async function handler(req, res) {
   try {
 					const prompt = `
 					Give me some words which is a synonyms with 
-					"${first}${word}" in belows format which can be convert to Json. Don't put answer before your answer and meaning should be only two.
+					"${first} ${word}" in belows format which can be convert to Json. Don't put answer before your answer and meaning should be only two.
 					Eachmeaning should be more than 10 words and not be same as ${word}
 				[
 					{"index":1,
