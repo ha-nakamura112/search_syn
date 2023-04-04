@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 function Home() {
-  const server = 'http://localhost:3000/';
+  const server = 'https://search-syn.vercel.app/';
+
   
   const [ userInput, setUserInput] = useState('');
   const [ parsedResponse, setparsedResponse ] = useState('');
