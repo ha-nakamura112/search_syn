@@ -17,26 +17,27 @@ export default async function handler(req, res) {
 
   try {
 					const prompt = `
-					Give me some words which is a synonyms with 
-					"${first} ${word}" in belows format which can be convert to Json. Don't put answer before your answer and meaning should be only two.
-					Eachmeaning should be more than 10 words and not be same as ${word}
-				[
-					{"index":1,
-				"word":"Vassily",
-				"meaning":[
-					"first meaning",
-					"second meaning"
-				]
-			},
-				{
-					"index":2,
-				"word":"Hesther",
-				"meaning":[
-					"first meaning",
-					"second meaning"
-				]
-			}
-			]
+					Please provide synonyms and their meanings for the word ${word}". Your response should be in the following format, which can be converted to JSON:
+
+[
+  {
+    "index": 1,
+    "word": "synonym_1",
+    "meaning": [
+      "a description of the first meaning of synonym_1, which should be more than 10 words and not identical to the word being defined",
+      "a description of the second meaning of synonym_1, which should be more than 10 words and not identical to the word being defined"
+    ]
+  },
+  {
+    "index": 2,
+    "word": "synonym_2",
+    "meaning": [
+      "a description of the first meaning of synonym_2, which should be more than 10 words and not identical to the word being defined",
+      "a description of the second meaning of synonym_2, which should be more than 10 words and not identical to the word being defined"
+    ]
+  }
+]
+
 			`;
 			const response = await openai.createCompletion({
 				model: "text-davinci-003",

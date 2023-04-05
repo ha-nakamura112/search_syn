@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 
 function Home() {
-  const server = 'https://search-syn.vercel.app/';
-   
+  const server = 'http://localhost:3000/';
+  // const server = 'https://search-syn.vercel.app/';
+  
   const [ userInput, setUserInput] = useState('');
   const [ parsedResponse, setparsedResponse ] = useState('');
 
   const runPrompt = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('first', e.target[0].value);
-    formData.append('word', userInput);
+    const formData = new FormData(e.target);
+    // formData.append('first', e.target[0].value);
+    // formData.append('word', userInput);
     const response = await fetch(`${server}api/hello`, {
       method: 'POST',
       body: formData,
@@ -24,11 +25,11 @@ function Home() {
   return (
     <div>
       <form onSubmit={(e)=>runPrompt(e)}>
-        <select>
+        <select name='first'>
           <option value='Too'>Too</option>
           <option value='Very'>Very</option>
         </select>
-        <input type='text' onChange={(e)=> setUserInput(e.target.value)} />
+        <input type='text' name='word'/>
         <button type='submit'>Convert</button>
       </form>
       <div>
