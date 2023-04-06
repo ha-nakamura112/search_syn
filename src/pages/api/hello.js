@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
-import { OpenAIApi, Configuration } from 'openai';
-
 dotenv.config();
+
+import { OpenAIApi, Configuration } from 'openai';
 
 const API_KEY = process.env.OPEN_CHAT_KEY;
 

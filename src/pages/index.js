@@ -6,7 +6,7 @@ const server = 'https://search-syn.vercel.app/';
 
 const fetchDatas = async () => {
   try {
-    const res = await fetch(`${server}/data/info.json`);
+    const res = await fetch(`data/info.json`);
     const data = await res.json();
     return data;
   }
