@@ -38,7 +38,6 @@ export default async function handler(req, res) {
 ]
 
 			`;
-      console.log(prompt)
 			const response = await openai.createCompletion({
 				model: "text-davinci-003",
 				prompt: prompt,
@@ -52,11 +51,9 @@ export default async function handler(req, res) {
     }
 
 		const parsableJSONresponse = response.data.choices[0].text;
-    console.log(parsableJSONresponse)
 		res.status(200).json(JSON.parse(parsableJSONresponse));
 
   } catch (error) {
-    console.error(error);
     res.status(500).json({ message: error });
   }
 }
