@@ -1,4 +1,3 @@
-// pages/api/synonyms/[word].js
 import dotenv from 'dotenv';
 import { OpenAIApi, Configuration } from 'openai';
 
@@ -7,7 +6,7 @@ dotenv.config();
 const API_KEY = process.env.OPEN_CHAT_KEY;
 
 export default async function handler(req, res) {
-  const first  = req.body.first;
+  const adv  = req.body.adv;
   const word  = req.body.word;
 	const config = new Configuration({
     apiKey: API_KEY
@@ -17,7 +16,7 @@ export default async function handler(req, res) {
 
   try {
 					const prompt = `
-					Please provide synonyms and their meanings for the word ${word}". Your response should be in the following format, which can be converted to JSON:
+					Please provide synonyms and their meanings for the word "${adv} ${word}". Your response should be in the following format, which can be converted to JSON. Don't put any word before your answer:
 
 [
   {
@@ -39,6 +38,7 @@ export default async function handler(req, res) {
 ]
 
 			`;
+      console.log(prompt)
 			const response = await openai.createCompletion({
 				model: "text-davinci-003",
 				prompt: prompt,

@@ -1,0 +1,92 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
+import { OpenAIApi, Configuration } from 'openai';
+import formidable from 'formidable';
+
+const API_KEY = process.env.OPEN_CHAT_KEY;
+
+export default async function handler(req, res) {
+	// if (req.method === "POST") {
+		const config = new Configuration({
+			apiKey: API_KEY
+		});
+		const openai = new OpenAIApi(config);
+
+		console.log(req.body);
+		const formData = new formidable.IncomingForm({ keepExtensions: true });
+    const askGPT = () => {
+      return new Promise((resolve, reject) => {
+        formData.parse(req, async (error, fields) => {
+          if (error) {
+            console.log(error);
+            reject({
+              status: 500,
+              message: error
+            });
+          }
+          try {
+            const word = fields.word;
+            const prompt = `
+              Please provide synonyms and their meanings for the word ${word}.
+              Your response should be in the following format, which can be converted to JSON:
+
+              [{
+                "index": 1,
+                "word": "synonym_1",
+                "meaning": [
+                  "a description of the first meaning of synonym_1, which should be more than 10 words and not identical to the word being defined",
+                  "a description of the second meaning of synonym_1, which should be more than 10 words and not identical to the word being defined"
+                ]
+              },{
+                "index": 2,
+                "word": "synonym_2",
+                "meaning": [
+                  "a description of the first meaning of synonym_2, which should be more than 10 words and not identical to the word being defined",
+                  "a description of the second meaning of synonym_2, which should be more than 10 words and not identical to the word being defined"
+                ]
+              }]`;
+            const response = await openai.createCompletion({
+              model: 'text-davinci-002',
+              prompt: prompt,
+              maxTokens: 2048,
+              temperature: 1,
+            });
+
+            if (!response) {
+              reject({
+                status: 404,
+                message: 'No synonyms found.'
+              });
+            }
+            const parsableJSONresponse = response.data.choices[0].text;
+            resolve({
+              status: 200,
+              message: JSON.parse(parsableJSONresponse)
+            });
+          } 
+					catch (error) {
+            console.error(error);
+            reject({
+              status: 500,
+              message: error
+            });
+          }
+        }
+				);
+			})}
+
+
+
+
+
+		try {
+			const answer = await askGPT();
+			console.log(answer)
+			res.status(answer.status).json(answer.message);
+		} catch (error) {
+			res.status(error.status).json({ message: error.message });
+		}
+		
+	// }
+}
