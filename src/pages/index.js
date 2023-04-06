@@ -1,11 +1,35 @@
 import React, { useState } from 'react';
 
-function Home() {
-  // const server = 'http://localhost:3000/';
-  const server = 'https://search-syn.vercel.app/';
-  
+
+const server = 'http://localhost:3000/';
+// const server = 'https://search-syn.vercel.app/';
+
+const fetchDatas = async () => {
+  try {
+    const res = await fetch(`${server}/data/info.json`);
+    const data = await res.json();
+    return data;
+  }
+  catch(err) {
+    console.log(err);
+  }
+};
+export async function getStaticProps() {
+  const data = await fetchDatas();
+  return {
+    props: {
+      number: data.numbers,
+      language: data.languages
+    },
+  };
+}
+
+function Home( { number, language } ) {
+  const [ num, setNum ] = useState(1)
+  const [ lang, setLang ] = useState('Japanese')
   const [ userInput, setUserInput] = useState('');
   const [ adv, setAdv ] = useState('too');
+  const [ msg, setMsg ] = useState(null);
   const [ parsedResponse, setparsedResponse ] = useState('');
 
   const runPrompt = async (e) => {
@@ -13,7 +37,9 @@ function Home() {
     const formData = 
       {
         'word': userInput,
-        'adv': adv
+        'adv': adv,
+        'num': num,
+        'lang': lang
       }
     
     const response = await fetch(`${server}api/hello`, {
@@ -23,14 +49,47 @@ function Home() {
         'Content-Type': 'application/json'
       }
     });
-    const data = await response.json();
-    setparsedResponse(data);
+
+    if(response?.status !== 200){
+      let data = await response.json();
+      setMsg(data?.message)
+      console.log(data.message)
+    }else{
+      let data = await response.json();
+      console.log(data)
+      setparsedResponse(data);
+    }
+
   };
   
 
   return (
     <div>
       <form onSubmit={(e)=>runPrompt(e)}>
+            <div>
+              <label htmlFor='language'>
+                Choose which language
+              </label>
+              <select onChange={(e)=>setLang(e.target.value)} name='language' value={lang}>
+              {language && language.map((lan,idx) =>{
+                return (
+                  <option key={idx} value={lan}>{lan}</option>
+                  )
+                })}
+              </select>
+            </div>
+            <div>
+              <label htmlFor='number'>
+                Choose number
+              </label>
+              <select onChange={(e)=>setNum(e.target.value)} name='number' value={num}>
+              {number && number.map((numb,idx) =>{
+                return (
+                  <option key={idx} value={numb}>{numb}</option>
+                  )
+                })}
+              </select>
+            </div>
         <select onChange={(e)=>setAdv(e.target.value)}>
           <option value='too'>Too</option>
           <option value='very'>Very</option>
@@ -50,7 +109,10 @@ function Home() {
               </div>
             )
           })
-        : null
+        : 
+        <div>
+          { msg }
+        </div>
       }
 
       </div>
