@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 
-const server = 'http://localhost:3000/';
-// const server = 'https://search-syn.vercel.app/';
+// const server = 'http://localhost:3000/';
+const server = 'https://search-syn.vercel.app/';
 
 const fetchDatas = async () => {
   try {
