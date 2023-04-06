@@ -6,7 +6,7 @@ const server = 'https://search-syn.vercel.app/';
 
 const fetchDatas = async () => {
   try {
-    const res = await fetch(`data/info.json`);
+    const res = await fetch(`${server}/data/info.json`);
     const data = await res.json();
     return data;
   }
@@ -14,6 +14,7 @@ const fetchDatas = async () => {
     console.log(err);
   }
 };
+
 export async function getStaticProps() {
   const data = await fetchDatas();
   return {
@@ -34,7 +35,7 @@ function Home( { number, language } ) {
 
   const runPrompt = async (e) => {
     e.preventDefault();
-    const formData = 
+    const sendData = 
       {
         'word': userInput,
         'adv': adv,
@@ -44,7 +45,7 @@ function Home( { number, language } ) {
     
     const response = await fetch(`${server}api/hello`, {
       method: 'POST',
-      body:  JSON.stringify(formData),
+      body:  JSON.stringify(sendData),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -53,16 +54,12 @@ function Home( { number, language } ) {
     if(response?.status !== 200){
       let data = await response.json();
       setMsg(data?.message)
-      console.log(data.message)
     }else{
       let data = await response.json();
-      console.log(data)
       setparsedResponse(data);
     }
-
   };
   
-
   return (
     <div>
       <form onSubmit={(e)=>runPrompt(e)}>
@@ -71,7 +68,7 @@ function Home( { number, language } ) {
                 Choose which language
               </label>
               <select onChange={(e)=>setLang(e.target.value)} name='language' value={lang}>
-              {language && language.map((lan,idx) =>{
+              { language && language.map((lan,idx) =>{
                 return (
                   <option key={idx} value={lan}>{lan}</option>
                   )
