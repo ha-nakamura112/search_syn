@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 
 // const server = 'http://localhost:3000/';
-const server = 'https://search-syn.vercel.app/';
+const server = 'https://https://search-cg66e8mhd-ha-nakamura112.vercel.app//';
 
 const fetchDatas = async () => {
   try {
