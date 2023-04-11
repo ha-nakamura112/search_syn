@@ -20,7 +20,7 @@ export default async function handler(req, res) {
   
     try {
             const prompt = `
-            Please provide ${num} synonyms and their meanings for the word "${adv} ${word}" in ${lang}. Your response should be in the following format, which can be converted to JSON. Don't put any word before your answer:
+            Please provide ${num} synonyms and their meanings for the word "${adv} ${word}" in ${lang}. Your response should be in the following format and in ${lang}, which can be converted to JSON. Don't put any word before your answer:
   
   [
     {
@@ -42,6 +42,7 @@ export default async function handler(req, res) {
   ]
   
         `;
+        console.log(prompt)
         const response = await openai.createCompletion({
           model: "text-davinci-003",
           prompt: prompt,

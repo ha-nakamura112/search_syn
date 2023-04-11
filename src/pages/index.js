@@ -14,7 +14,6 @@ const fetchDatas = async ( server ) => {
   try {
     const res = await fetch(`${server}/data/info.json`);
     const data = await res.json();
-    console.log(res)
     return data
   }
   catch(err) {
@@ -52,7 +51,7 @@ function Home({ server }) {
         'lang': lang
       }
     
-    const response = await fetch(`${server}api/hello`, {
+    const response = await fetch(`${server}/api/hello`, {
       method: 'POST',
       body:  JSON.stringify(sendData),
       headers: {
@@ -65,6 +64,7 @@ function Home({ server }) {
       setMsg(data?.message)
     }else{
       let data = await response.json();
+      console.log(data)
       setparsedResponse(data);
     }
   };
