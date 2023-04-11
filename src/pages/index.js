@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
+export async function getServerSideProps({ req }) {
+  const currentHost = req.headers.host;
+  return {
+    props: {
+      server : `http://${currentHost}`
+    },
+  }
+}
 
-// const server = 'http://localhost:3000/';
-const server = 'https://https://search-cg66e8mhd-ha-nakamura112.vercel.app//';
 
-const fetchDatas = async () => {
+const fetchDatas = async ( server ) => {
   try {
     const res = await fetch(`${server}/data/info.json`);
     const data = await res.json();
@@ -15,7 +21,8 @@ const fetchDatas = async () => {
   }
 };
 
-function Home() {
+function Home({ server }) {
+
   const [ number, setNumber ] = useState('');
   const [ language, setLanguage ] = useState('');
   const [ num, setNum ] = useState(1)
@@ -27,7 +34,7 @@ function Home() {
 
   useEffect(()=>{
     const gettingData = async() => {
-      const data = await fetchDatas();
+      const data = await fetchDatas(server);
       setLanguage(data.languages);
       setNumber(data.numbers);
     }
