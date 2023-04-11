@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 // const server = 'http://localhost:3000/';
@@ -15,23 +15,24 @@ const fetchDatas = async () => {
   }
 };
 
-export async function getStaticProps() {
-  const data = await fetchDatas();
-  return {
-    props: {
-      number: data.numbers,
-      language: data.languages
-    },
-  };
-}
-
-function Home( { number, language } ) {
+function Home() {
+  const [ number, setNumber ] = useState('');
+  const [ language, setLanguage ] = useState('');
   const [ num, setNum ] = useState(1)
   const [ lang, setLang ] = useState('Japanese')
   const [ userInput, setUserInput] = useState('');
   const [ adv, setAdv ] = useState('too');
   const [ msg, setMsg ] = useState(null);
   const [ parsedResponse, setparsedResponse ] = useState('');
+
+  useEffect(()=>{
+    const gettingData = async() => {
+      const data = await fetchDatas();
+      setLanguage(data.languages);
+      setNumber(data.numbers);
+    }
+    gettingData();
+  },[]);
 
   const runPrompt = async (e) => {
     e.preventDefault();
