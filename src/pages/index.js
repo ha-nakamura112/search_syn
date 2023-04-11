@@ -8,7 +8,7 @@ const fetchDatas = async () => {
   try {
     const res = await fetch(`${server}/data/info.json`);
     const data = await res.json();
-    return data;
+    return data
   }
   catch(err) {
     console.log(err);

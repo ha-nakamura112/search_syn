@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import formidable from 'formidable';
 dotenv.config();
 
 import { OpenAIApi, Configuration } from 'openai';
@@ -7,6 +8,7 @@ const API_KEY = process.env.OPEN_CHAT_KEY;
 
 export default async function handler(req, res) {
   if(req.method === "POST"){
+ 
     const adv  = req.body.adv;
     const word  = req.body.word;
     const num  = req.body.num;
