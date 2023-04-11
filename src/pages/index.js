@@ -14,6 +14,7 @@ const fetchDatas = async ( server ) => {
   try {
     const res = await fetch(`${server}/data/info.json`);
     const data = await res.json();
+    console.log(res)
     return data
   }
   catch(err) {
