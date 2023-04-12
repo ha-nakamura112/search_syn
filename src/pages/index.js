@@ -76,6 +76,7 @@ function Home({ server }) {
       } else {
         const data = await response.json();
         setparsedResponse(data);
+        console.log(data);
         if(data.length > 6){
           setCssFlag(false);
         }
