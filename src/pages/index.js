@@ -118,11 +118,11 @@ function Home({ server }) {
             </div>
             <details>
               <summary>
-              What's the difference is Too and Very?
+              What&apos;s the difference is Too and Very?
               </summary>
               
               <small>
-              "Too" means excessive or beyond desirable, while "very" means high degree or intensity. "Too" has negative consequence, "very" emphasizes intensity. 
+              &quot;Too&quot; means excessive or beyond desirable, while &quot;very&quot; means high degree or intensity. &quot;Too&quot; has negative consequence, &quot;very&quot; emphasizes intensity. 
               </small>
             </details>
         </form>
