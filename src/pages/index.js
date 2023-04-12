@@ -71,6 +71,7 @@ function Home({ server }) {
   
       if (response?.status !== 200) {
         const data = await response.json();
+        
         setMsg(data?.message);
         setparsedResponse(null);
       } else {
