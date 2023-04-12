@@ -1,10 +1,10 @@
 .body {
   display: flex;
+  width: 100vw;
 }
 
-
 .figure {
-  width: 50vw;
+  width: 50%;
   height: 100vh;
   background-color: var(--color-blue-icon);
   display: flex;
@@ -102,7 +102,7 @@
 
 .mainClass {
   background-color: var(--color-icon-text);
-  width: 50vw;
+  width: 50%;
   height: 100vh;
 }
 
@@ -141,4 +141,20 @@
 .synonym li {
   line-height: 1.5;
   letter-spacing: 1.3px;
+}
+
+@media screen and (max-width:768px) {
+  .body {
+    flex-direction: column;
+  }
+
+  .figure,
+  .mainClass {
+    width: 100%;
+  }
+
+  .figure {
+    height: 65vh;
+  }
+
 }

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import style from "../styles/Home.module.css";
+import Image from 'next/image';
+
 
 export async function getServerSideProps({ req }) {
   const currentHost = req.headers.host;
   return {
     props: {
-      // server : `http://${currentHost}`
-      server : `https://${currentHost}`
+      server : `http://${currentHost}`
+      // server : `https://${currentHost}`
     },
   }
 }
@@ -73,7 +75,13 @@ function Home({ server }) {
   return (
     <div className={ style.body }>
       <figure className={style.figure}>
-        <img className={ style.img } src='../../imgs/logo_Vocamate.jpeg'/>
+        <Image
+        src='/imgs/logo_Vocamate.jpeg'
+        alt="logo icon"
+        className={ style.img } 
+        width={200}
+        height={200}
+      />
         <p>Let's find new vocabulary</p>
         <form onSubmit={(e)=>runPrompt(e)} className={ style.formClass }>
             <div>
@@ -154,17 +162,15 @@ function Home({ server }) {
                    <h2>Scorching</h2>
                    <ul>
                     <li>Extremely hot and uncomfortable</li>
-                   <li>Having a bright red-orange ...
-</li>
+                   <li>Having a bright red-orange &hellip;</li>
                    </ul>
                 
             </div>
             <div className={ style.synonym }>
                    <h2>Blazing</h2>
                    <ul>
-                    <li>Very hot,often referring to the extreme ...</li>
-                   <li>To burn brightly and fierccely with ..
-</li>
+                    <li>Very hot,often referring to the extreme &hellip;</li>
+                   <li>To burn brightly and fierccely with &hellip;</li>
                    </ul>
                 
             </div>
