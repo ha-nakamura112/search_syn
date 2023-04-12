@@ -4,14 +4,16 @@ import Image from 'next/image';
 
 
 export async function getServerSideProps({ req }) {
+  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
   const currentHost = req.headers.host;
+  const server = `${protocol}://${currentHost}`;
   return {
     props: {
-      // server : `http://${currentHost}`
-      server : `https://${currentHost}`
+      server,
     },
-  }
+  };
 }
+
 
 
 const fetchDatas = async ( server ) => {
@@ -63,13 +65,16 @@ function Home({ server }) {
       }
     });
 
-    if(response?.status !== 200){
-      let data = await response.json();
-      setMsg(data?.message)
-    }else{
-      let data = await response.json();
+    if (response?.status !== 200) {
+      const data = await response.json();
+      setMsg(data?.message);
+      setparsedResponse(null);
+    } else {
+      const data = await response.json();
       setparsedResponse(data);
+      setMsg(null);
     }
+    
   };
   
   return (
@@ -77,21 +82,21 @@ function Home({ server }) {
       <figure className={style.figure}>
         <Image
         src='/imgs/logo_Vocamate.jpeg'
-        alt="logo icon"
+        alt='logo icon'
         className={ style.img } 
         width={200}
         height={200}
       />
-        <p>Let's find new vocabulary</p>
+        <p>Let&apos;s find new vocabulary</p>
         <form onSubmit={(e)=>runPrompt(e)} className={ style.formClass }>
             <div>
               <label htmlFor='language'>
                 Which language in answer?
               </label>
               <select onChange={(e)=>setLang(e.target.value)} name='language' value={lang}>
-                { language && language.map((lan,idx) =>{
+                { language && language.map((lan) =>{
                   return (
-                    <option key={idx} value={lan}>{lan}</option>
+                    <option key={lan} value={lan}>{lan}</option>
                   )
                 })}
               </select>
@@ -101,9 +106,9 @@ function Home({ server }) {
                 How many examples?
               </label>
               <select onChange={(e)=>setNum(e.target.value)} name='number' value={num}>
-              {number && number.map((numb,idx) =>{
+              {number && number.map((numb) =>{
                 return (
-                  <option key={idx} value={numb}>{numb}</option>
+                  <option key={numb} value={numb}>{numb}</option>
                   )
                 })}
               </select>
