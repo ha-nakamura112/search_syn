@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import style from "../styles/Home.module.css";
 
 export async function getServerSideProps({ req }) {
   const currentHost = req.headers.host;
   return {
     props: {
-      server : `https://${currentHost}`
+      server : `http://${currentHost}`
+      // server : `https://${currentHost}`
     },
   }
 }
@@ -30,7 +32,7 @@ function Home({ server }) {
   const [ userInput, setUserInput] = useState('');
   const [ adv, setAdv ] = useState('too');
   const [ msg, setMsg ] = useState(null);
-  const [ parsedResponse, setparsedResponse ] = useState('');
+  const [ parsedResponse, setparsedResponse ] = useState(null);
 
   useEffect(()=>{
     const gettingData = async() => {
@@ -64,29 +66,31 @@ function Home({ server }) {
       setMsg(data?.message)
     }else{
       let data = await response.json();
-      console.log(data)
       setparsedResponse(data);
     }
   };
   
   return (
-    <div>
-      <form onSubmit={(e)=>runPrompt(e)}>
+    <div className={ style.body }>
+      <figure className={style.figure}>
+        <img className={ style.img } src='../../imgs/logo_Vocamate.jpeg'/>
+        <p>Let's find new vocabulary</p>
+        <form onSubmit={(e)=>runPrompt(e)} className={ style.formClass }>
             <div>
               <label htmlFor='language'>
-                Choose which language
+                Which language in answer?
               </label>
               <select onChange={(e)=>setLang(e.target.value)} name='language' value={lang}>
-              { language && language.map((lan,idx) =>{
-                return (
-                  <option key={idx} value={lan}>{lan}</option>
+                { language && language.map((lan,idx) =>{
+                  return (
+                    <option key={idx} value={lan}>{lan}</option>
                   )
                 })}
               </select>
             </div>
             <div>
               <label htmlFor='number'>
-                Choose number
+                How many examples?
               </label>
               <select onChange={(e)=>setNum(e.target.value)} name='number' value={num}>
               {number && number.map((numb,idx) =>{
@@ -96,31 +100,79 @@ function Home({ server }) {
                 })}
               </select>
             </div>
-        <select onChange={(e)=>setAdv(e.target.value)}>
-          <option value='too'>Too</option>
-          <option value='very'>Very</option>
-        </select>
-        <input type='text' onChange={(e)=>setUserInput(e.target.value)}/>
-        <button type='submit'>Convert</button>
-      </form>
-      <div>
-        <h4>Synonyms</h4>
-        { parsedResponse ? 
-          parsedResponse.map((res)=>{
-            return (
-              <div key={res.index}>
-                <h3>{res.word}</h3>
-                <div>{res.meaning[0]}</div>
-                <div>{res.meaning[1]}</div>
-              </div>
-            )
-          })
-        : 
-        <div>
-          { msg }
-        </div>
-      }
+            <div>
+              <select onChange={(e)=>setAdv(e.target.value)}>
+                <option value='too'>Too</option>
+                <option value='very'>Very</option>
+              </select>
+              <input placeholder='write your adjective' type='text' onChange={(e)=>setUserInput(e.target.value)}/>
+              <button type='submit'>Convert</button>
+            </div>
+            <details>
+              <summary>
+              What's the difference is Too and Very?
+              </summary>
+              
+              <small>
+              "Too" means excessive or beyond desirable, while "very" means high degree or intensity. "Too" has negative consequence, "very" emphasizes intensity. 
+              </small>
+            </details>
+        </form>
+      </figure>
+      <div className={ style.mainClass }>
+        
+        <div className={ style.synonyms }>
+        { parsedResponse ? (
+            <div className={ style.synonyms }>
+            <div className={ style.exampTitle }>
+              <h4>Synonyms</h4>
+            </div>
+            { parsedResponse.map((res)=>{
+               return (
+                 <div className={ style.synonym } key={res.index}>
+                   <h2>{res.word}</h2>
+                   <ul>
+                    <li>{res.meaning[0]}</li>
+                    <li>{res.meaning[1]}</li>
+                   </ul>
+                 </div>
+               )
+             }) }
+          </div>
+        )
+          : parsedResponse === false ?
+          <div className={ style.synonyms }>
+            { msg }
+          </div>
+          :
+          <div className={ style.synonyms }>
+            <div className={ style.exampTitle }>
+              <h4>Synonyms</h4>
+              <p>Examples: Too hot</p>
+            </div>
+            <div className={ style.synonym }>
+                   <h2>Scorching</h2>
+                   <ul>
+                    <li>Extremely hot and uncomfortable</li>
+                   <li>Having a bright red-orange ...
+</li>
+                   </ul>
+                
+            </div>
+            <div className={ style.synonym }>
+                   <h2>Blazing</h2>
+                   <ul>
+                    <li>Very hot,often referring to the extreme ...</li>
+                   <li>To burn brightly and fierccely with ..
+</li>
+                   </ul>
+                
+            </div>
+          </div>
 
+        }
+
+        </div>
       </div>
     </div>
   );
