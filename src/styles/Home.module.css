@@ -4,7 +4,7 @@
 }
 
 .figure {
-  width: 50%;
+  width: 45%;
   height: 100vh;
   background-color: var(--color-blue-icon);
   display: flex;
@@ -13,14 +13,14 @@
   justify-content: center;
 }
 
+.img {
+  object-fit: cover;
+}
+
 .figure p {
   font-weight: 700;
   color: var(--color-icon-text);
   font-size: 22px;
-}
-
-.img {
-  width: 30vh;
 }
 
 .formClass {
@@ -30,11 +30,24 @@
   padding: 10% 10% 0% 10%;
   width: 90%;
   height: 40%;
+  color: var(--color-icon-text);
 }
 
 .formClass > div {
   display: flex;
+}
+
+.formClass > div:first-child,
+.formClass > div:nth-child(2){
   column-gap: 5%;
+}
+
+.formClass > div:nth-child(3){
+  column-gap: 1%;
+}
+
+.formClass > div:last-child{
+  flex-direction: column;
 }
 
 .formClass input,
@@ -42,6 +55,7 @@
   border: 0px none transparent;
   background-color: var(--color-blue-icon);
   padding: 2%;
+  color: var(--color-icon-text);
 }
 
 .formClass select option {
@@ -55,10 +69,12 @@
   justify-content: center;
 }
 .formClass button {
-  padding: 3%;
+  padding: 0% 2%;
   border: 0px none transparent;
   background-color: var(--color-blue-icon);
   border-radius: 15px;
+  color: var(--color-icon-text);
+  width: 20%;
 }
 
 .formClass button:hover {
@@ -71,17 +87,14 @@
   padding: 3%;
 }
 
+.formClass input::placeholder {
+  color: var(--color-icon-text);
+}
+
 .formClass input:focus {
   border: 1px solid var(--color-cloud);
 }
 
-.formClass > div:last-child{
-  flex-direction: column;
-}
-
-.formClass button {
-  width: 40%;
-}
 
 .formClass details {
   width: 100%;
@@ -102,7 +115,7 @@
 
 .mainClass {
   background-color: var(--color-icon-text);
-  width: 50%;
+  width: 55%;
   height: 100vh;
 }
 

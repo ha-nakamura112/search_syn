@@ -85,7 +85,7 @@ function Home({ server }) {
         alt='logo icon'
         className={ style.img } 
         width={200}
-        height={200}
+        height={130}
       />
         <p>Let&apos;s find new vocabulary</p>
         <form onSubmit={(e)=>runPrompt(e)} className={ style.formClass }>
