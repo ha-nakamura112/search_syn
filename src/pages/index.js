@@ -38,6 +38,7 @@ function Home({ server }) {
   const [ msg, setMsg ] = useState(null);
   const [ parsedResponse, setparsedResponse ] = useState(null);
   const [ cssFlag, setCssFlag ] = useState(true);
+  const [ sendFlag, setSendFlag ] = useState(true);
 
   useEffect(()=>{
     const gettingData = async() => {
@@ -50,7 +51,8 @@ function Home({ server }) {
 
   const runPrompt = async (e) => {
     e.preventDefault();
-    if(userInput !== null){
+    if(userInput !== null && userInput !== ''){
+      setSendFlag(false)
       setMsg(null);
       setCssFlag(true)
       const sendData = 
@@ -74,14 +76,15 @@ function Home({ server }) {
         
         setMsg(data?.message);
         setparsedResponse(null);
+        setUserInput(null);
       } else {
         const data = await response.json();
         setparsedResponse(data);
-        console.log(data);
         if(data.length > 6){
           setCssFlag(false);
         }
         setMsg(null);
+        setSendFlag(true);
       }
     }else{
       setMsg('Write your adjective');
@@ -97,7 +100,7 @@ function Home({ server }) {
         alt='logo icon'
         className={ style.img } 
         width={200}
-        height={130}
+        height={100}
       />
         <p>Let&apos;s find new vocabulary</p>
         <form onSubmit={(e)=>runPrompt(e)} className={ style.formClass }>
@@ -131,7 +134,11 @@ function Home({ server }) {
                 <option value='very'>Very</option>
               </select>
               <input placeholder='write your adjective' type='text' onChange={(e)=>setUserInput(e.target.value)}/>
+              { sendFlag ?
               <button type='submit'>Convert</button>
+              :
+              <h2>Converting...</h2>
+               }
             </div>
             <p>{msg}</p>
             <details>
