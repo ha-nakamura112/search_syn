@@ -3,15 +3,26 @@ import style from "../styles/Home.module.css";
 import Image from 'next/image';
 
 
+// export async function getServerSideProps({ req }) {
+//   const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+//   const currentHost = req.headers.host;
+//   const server = `${protocol}://${currentHost}`;
+//   console.log(server)
+//   return {
+//     props: {
+//       server,
+//     },
+//   };
+// }
+
 export async function getServerSideProps({ req }) {
-  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
   const currentHost = req.headers.host;
-  const server = `${protocol}://${currentHost}`;
   return {
     props: {
-      server,
+      server : `https://${currentHost}`
+      // server : `https://${currentHost}`
     },
-  };
+  }
 }
 
 
