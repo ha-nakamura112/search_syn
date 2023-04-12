@@ -33,10 +33,11 @@ function Home({ server }) {
   const [ language, setLanguage ] = useState('');
   const [ num, setNum ] = useState(1)
   const [ lang, setLang ] = useState('Japanese')
-  const [ userInput, setUserInput] = useState('');
+  const [ userInput, setUserInput] = useState(null);
   const [ adv, setAdv ] = useState('too');
   const [ msg, setMsg ] = useState(null);
   const [ parsedResponse, setparsedResponse ] = useState(null);
+  const [ cssFlag, setCssFlag ] = useState(true);
 
   useEffect(()=>{
     const gettingData = async() => {
@@ -49,30 +50,39 @@ function Home({ server }) {
 
   const runPrompt = async (e) => {
     e.preventDefault();
-    const sendData = 
-      {
-        'word': userInput,
-        'adv': adv,
-        'num': num,
-        'lang': lang
-      }
-    
-    const response = await fetch(`${server}/api/hello`, {
-      method: 'POST',
-      body:  JSON.stringify(sendData),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-
-    if (response?.status !== 200) {
-      const data = await response.json();
-      setMsg(data?.message);
-      setparsedResponse(null);
-    } else {
-      const data = await response.json();
-      setparsedResponse(data);
+    if(userInput !== null){
       setMsg(null);
+      setCssFlag(true)
+      const sendData = 
+        {
+          'word': userInput,
+          'adv': adv,
+          'num': num,
+          'lang': lang
+        }
+      
+      const response = await fetch(`${server}/api/hello`, {
+        method: 'POST',
+        body:  JSON.stringify(sendData),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+  
+      if (response?.status !== 200) {
+        const data = await response.json();
+        setMsg(data?.message);
+        setparsedResponse(null);
+      } else {
+        const data = await response.json();
+        setparsedResponse(data);
+        if(data.length > 6){
+          setCssFlag(false);
+        }
+        setMsg(null);
+      }
+    }else{
+      setMsg('Write your adjective');
     }
     
   };
@@ -121,6 +131,7 @@ function Home({ server }) {
               <input placeholder='write your adjective' type='text' onChange={(e)=>setUserInput(e.target.value)}/>
               <button type='submit'>Convert</button>
             </div>
+            <p>{msg}</p>
             <details>
               <summary>
               What&apos;s the difference is Too and Very?
@@ -136,13 +147,13 @@ function Home({ server }) {
         
         <div className={ style.synonyms }>
         { parsedResponse ? (
-            <div className={ style.synonyms }>
-            <div className={ style.exampTitle }>
+            <div className={ cssFlag ? style.synonyms : style.adjust__synonyms}>
+            <div className={ cssFlag ? style.exampTitle : style.adjust__exampTitle }>
               <h4>Synonyms</h4>
             </div>
             { parsedResponse.map((res)=>{
                return (
-                 <div className={ style.synonym } key={res.index}>
+                 <div className={ cssFlag ? style.synonym : style.adjust__synonym } key={res.index}>
                    <h2>{res.word}</h2>
                    <ul>
                     <li>{res.meaning[0]}</li>

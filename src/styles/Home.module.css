@@ -113,6 +113,8 @@
   font-size: 16px;
 }
 
+/* left part */
+
 .mainClass {
   background-color: var(--color-icon-text);
   width: 55%;
@@ -122,9 +124,9 @@
 .synonyms {
   display: flex;
   flex-direction: column;
-  row-gap: 3vh;
+  row-gap: 2vh;
   align-items: center;
-  padding: 5%;
+  padding: 3%;
 }
 
 .exampTitle {
@@ -133,8 +135,6 @@
   width: 100%;
   row-gap: 1vh;
 }
-
-
 
 .synonym {
   display: flex;
@@ -156,6 +156,38 @@
   letter-spacing: 1.3px;
 }
 
+/* answer more than 6 */
+
+.adjust__synonyms {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3vh;
+  align-items: center;
+}
+
+.adjust__exampTitle {
+ display: none;
+}
+
+.adjust__synonym {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.adjust__synonym h2 {
+  width: 20vh;
+}
+
+.adjust__synonym ul {
+  padding-left: 3vh;
+}
+
+.adjust__synonym li {
+  letter-spacing: .8px;
+}
+
+/* mobile */
 @media screen and (max-width:768px) {
   .body {
     flex-direction: column;
