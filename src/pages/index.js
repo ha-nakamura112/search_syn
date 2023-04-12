@@ -7,8 +7,8 @@ export async function getServerSideProps({ req }) {
   const currentHost = req.headers.host;
   return {
     props: {
-      server : `http://${currentHost}`
-      // server : `https://${currentHost}`
+      // server : `http://${currentHost}`
+      server : `https://${currentHost}`
     },
   }
 }
