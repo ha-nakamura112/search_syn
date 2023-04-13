@@ -269,8 +269,7 @@
 
 
   .submit__button > button {
-    height: 5vh;
-    width: 20vw;
+    width: 16vw;
   }
 
 }
