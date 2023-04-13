@@ -208,7 +208,7 @@
 .adjust__synonym li {
   letter-spacing: .8px;
 }
-@media screen and (min-width:300px) and (max-width:499px){
+@media screen and (min-width:300px) and (max-width:500px){
   .body {
     flex-direction: column;
   }
@@ -260,7 +260,7 @@
   }
 
   .figure {
-    height: 120vw;
+    height: 125vw;
   }
 
   .initial__word {
