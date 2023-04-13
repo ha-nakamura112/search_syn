@@ -238,7 +238,6 @@
     column-gap: 3vw;
   }
 
-
   .submit__button > button {
     height: 4vh;
     width: 20vw;
@@ -305,7 +304,7 @@
 
 
   .submit__button > button {
-    width: 16vw;
+    width: 12vw;
   }
 
 }
