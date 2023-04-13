@@ -71,7 +71,7 @@
     color: var(--color-icon-text);
     border-radius: 10px;
     font-size: 16px;
-    height: 7vw;
+    height: 7.5vw;
   }
 
   .formClass select option {
@@ -206,7 +206,7 @@
 
 @media screen and (min-width:500px){
   .figure {
-    height: 90vh;
+    height: 150vw;
   }
 
   .submit__button > button {
