@@ -1,229 +1,55 @@
-.body {
-  display: flex;
-  width: 100vw;
-}
-
-.figure {
-  width: 45%;
-  height: 100vh;
-  background-color: var(--color-blue-icon);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 5%;
-}
-
-.img {
-  object-fit: cover;
-}
-
-.figure p {
-  font-weight: 700;
-  color: var(--color-icon-text);
-  font-size: 22px;
-}
-
-.formClass {
-  display: flex;
-  flex-direction: column;
-  row-gap: 10%;
-  padding: 13% 10% 0% 10%;
-  width: 90%;
-  height: 45%;
-  color: var(--color-icon-text);
-}
-
-.formClass > div {
-  display: flex;
-}
-
-.formClass > div:first-child,
-.formClass > div:nth-child(2){
-  column-gap: 5%;
-  padding-bottom: 2%;
-}
-
-.initial__word {
-  display: flex;
-  flex-direction: row;
-  column-gap: 5vw;
-}
-
-.user__input {
-  display: flex;
-  flex-direction: row;
-  column-gap: 1vw;
-}
-
-.formClass input,
-.formClass select {
-  border: 1px solid var(--color-icon-text);
-  background-color: var(--color-blue-icon);
-  padding: 0% 2%;
-  color: var(--color-icon-text);
-  border-radius: 10px;
-  font-size: 16px;
-  height: 3vw;
-}
-
-.formClass select option {
-    font-size: 16px; 
-}
-
-.formClass label{
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-}
-
-.formClass button {
-  border: 1px solid var(--color-icon-text);
-  background-color: var(--color-icon-text);
-  border-radius: 10px;
-  color: var(--color-blue-icon);
-  font-weight: 700;
-  font-size: 16px;
-  width: 6vw;
-  height: 3vw;
-}
-
-.formClass select:hover,
-.formClass button:hover {
-  transition: .3s;
-  box-shadow: var(--box-shadow-regular);
-  cursor: pointer;
-  transform: translateY(-3px);
-  transition-duration: .3s;
-}
-
-.formClass input {
-  padding: 3%;
-}
-
-.formClass h2 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.formClass input::placeholder {
-  color: var(--color-icon-text);
-}
-
-.formClass input:focus {
-  border: 1px solid var(--color-cloud);
-}
-
-.formClass details {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.formClass summary {
-  cursor: pointer;
-  padding-bottom: 1.5vh;
-  font-size: 16px;
-}
-
-.formClass details small{
-  letter-spacing: 1.3px;
-  line-height: 1.3;
-  font-size: 14px;
-}
-
-/* right part */
-
-.mainClass {
-  background-color: var(--color-icon-text);
-  width: 55%;
-  height: 100vh;
-}
-
-.synonyms {
-  display: flex;
-  flex-direction: column;
-  row-gap: 2vh;
-  align-items: center;
-  padding: 3%;
-}
-
-.exampTitle {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  row-gap: 1vh;
-}
-
-.synonym {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-}
-
-.synonym h2 {
-  padding-bottom: 3%;
-}
-
-.synonym ul {
-  padding-left: 3vh;
-}
-
-.synonym li {
-  line-height: 1.5;
-  letter-spacing: 1.3px;
-}
-
-/* answer more than 6 */
-
-.adjust__synonyms {
-  display: flex;
-  flex-direction: column;
-  row-gap: 3vh;
-  align-items: center;
-}
-
-.adjust__exampTitle {
- display: none;
-}
-
-.adjust__synonym {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-}
-
-.adjust__synonym h2 {
-  width: 20vh;
-}
-
-.adjust__synonym ul {
-  padding-left: 3vh;
-}
-
-.adjust__synonym li {
-  letter-spacing: .8px;
-}
-@media screen and (min-width:300px) and (max-width:500px){
+@media screen and (min-width:300px) {
   .body {
+    display: flex;
     flex-direction: column;
+    width: 100vw;
   }
 
-  .figure,
-  .mainClass {
+  .figure {
     width: 100%;
+    height: 130vw;
+    background-color: var(--color-blue-icon);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 5%;
+  }
+  
+  .img {
+    object-fit: cover;
+  }
+
+  .figure p {
+    font-weight: 700;
+    color: var(--color-icon-text);
+    font-size: 22px;
+  }
+
+  .formClass {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10%;
+    padding: 13% 10% 0% 10%;
+    width: 90%;
+    height: 45%;
+    color: var(--color-icon-text);
   }
 
   .formClass label {
     font-size: 14px;
   }
 
-  .figure {
-    height: 150vw;
+  .formClass > div {
+    display: flex;
+  }
+
+  .formClass > div:first-child,
+  .formClass > div:nth-child(2){
+    column-gap: 5%;
+    padding-bottom: 2%;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .initial__word {
@@ -237,74 +63,198 @@
     column-gap: 3vw;
   }
 
-  .submit__button > button {
-    height: 10vw;
-    width: 20vw;
-  }
-}
-
-
-/* mobile */
-@media screen and (min-width:500px) and (max-width:767px) {
-  .body {
-    flex-direction: column;
-  }
-
-  .figure,
-  .mainClass {
-    width: 100%;
-  }
-
-  .formClass label {
-    font-size: 14px;
-  }
-
-  .figure {
-    height: 125vw;
-  }
-
-  .initial__word {
-    display: flex;
-    flex-direction: column;
-    row-gap: 5vw;
-  }
-
-  .user__input {
-    display: flex;
-    column-gap: 3vw;
-  }
-
-
-  .submit__button > button {
-    width: 20vw;
+  .formClass input,
+  .formClass select {
+    border: 1px solid var(--color-icon-text);
+    background-color: var(--color-blue-icon);
+    padding: 0% 2%;
+    color: var(--color-icon-text);
+    border-radius: 10px;
+    font-size: 16px;
     height: 7vw;
   }
 
-}
+  .formClass select option {
+      font-size: 16px; 
+  }
 
-/* tablet */
-@media screen and (min-width:767px) and (max-width: 1023px) {
+  .submit__button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
 
-  .formClass label {
+  .submit__button h2 {
+    text-align: center;
+  }
+  
+  .formClass button {
+    border: 1px solid var(--color-icon-text);
+    background-color: var(--color-icon-text);
+    border-radius: 10px;
+    color: var(--color-blue-icon);
+    font-weight: 700;
+    font-size: 16px;
+    height: 7.5vw;
+    width: 20vw;
+  }
+
+  .formClass select:hover,
+  .formClass button:hover {
+    transition: .3s;
+    box-shadow: var(--box-shadow-regular);
+    cursor: pointer;
+    transform: translateY(-3px);
+    transition-duration: .3s;
+  }
+
+  .formClass input::placeholder {
+    color: var(--color-icon-text);
+  }
+
+  .formClass details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .formClass summary {
+    cursor: pointer;
+    padding-bottom: 1.5vh;
     font-size: 16px;
   }
 
+  .formClass details small{
+    letter-spacing: 1.3px;
+    line-height: 1.3;
+    font-size: 14px;
+  }
 
-  .initial__word {
+  /* bottom */
+  .mainClass {
+    width: 100%;
+    background-color: var(--color-icon-text);
+    height: 100vh;
+  }
+
+  .synonyms {
     display: flex;
     flex-direction: column;
-    row-gap: 5vw;
+    row-gap: 2vh;
+    align-items: center;
+    padding: 3%;
   }
 
-  .user__input {
+  .exampTitle {
     display: flex;
-    column-gap: 3vw;
+    flex-direction: column;
+    width: 100%;
+    row-gap: 1vh;
   }
 
+  .synonym {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .synonym h2 {
+    padding-bottom: 3%;
+  }
+
+  .synonym ul {
+    padding-left: 3vh;
+  }
+
+  .synonym li {
+    line-height: 1.5;
+    letter-spacing: 1.3px;
+  }
+
+  /* answer more than 6 */
+  .adjust__synonyms {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3vh;
+    align-items: center;
+  }
+
+  .adjust__exampTitle {
+  display: none;
+  }
+
+  .adjust__synonym {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .adjust__synonym h2 {
+    width: 20vh;
+  }
+
+  .adjust__synonym ul {
+    padding-left: 3vh;
+  }
+
+  .adjust__synonym li {
+    letter-spacing: .8px;
+  }
+
+}
+
+@media screen and (min-width:500px){
+  .figure {
+    height: 90vh;
+  }
 
   .submit__button > button {
-    width: 12vw;
-    height: 5vw;
+    height: 8vw;
   }
+
+}
+
+@media screen and (min-width:769px){
+  .body {
+    flex-direction: row;
+  }
+
+  .figure {
+      width: 45%;
+      height: 100vh;
+  }
+
+  .mainClass {
+    width: 55%;
+  }
+
+  .formClass input,
+  .formClass select {
+    height: 4vw;
+  }
+
+  .submit__button > button {
+    height: 4.5vw;
+    width: 15vw;
+  }
+
+}
+
+@media screen and (min-width:1023px) {
+  .formClass label {
+    font-size: 18px;
+  }
+
+  .formClass input,
+  .formClass select {
+    height: 3vw;
+  }
+
+  .submit__button > button {
+    height: 3.5vw;
+    width: 12vw;
+  }
+
 
 }

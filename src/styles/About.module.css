@@ -1,0 +1,192 @@
+/* .body {
+  display: flex;
+  width: 100vw;
+} */
+
+.figure {
+  width: 45%;
+  height: 100vh;
+  /* height: 100vh;
+  background-color: var(--color-blue-icon);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 5%; */
+}
+/* 
+.img {
+  object-fit: cover;
+} */
+
+/* .figure p {
+  font-weight: 700;
+  color: var(--color-icon-text);
+  font-size: 22px;
+} */
+
+/* .formClass {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10%;
+  padding: 13% 10% 0% 10%;
+  width: 90%;
+  height: 45%;
+  color: var(--color-icon-text);
+} */
+
+/* .formClass > div {
+  display: flex;
+} */
+
+/* .formClass > div:first-child,
+.formClass > div:nth-child(2){
+  column-gap: 5%;
+  padding-bottom: 2%;
+} */
+
+.initial__word {
+  flex-direction: row;
+  column-gap: 5vw;
+}
+
+.user__input {
+  flex-direction: row;
+  column-gap: 1vw;
+}
+
+.formClass input,
+.formClass select {
+  border: 1px solid var(--color-icon-text);
+  background-color: var(--color-blue-icon);
+  padding: 0% 2%;
+  color: var(--color-icon-text);
+  border-radius: 10px;
+  font-size: 16px;
+  height: 3vw;
+}
+
+.formClass select option {
+    font-size: 16px; 
+}
+
+.formClass label{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.formClass button {
+  /* border: 1px solid var(--color-icon-text);
+  background-color: var(--color-icon-text);
+  border-radius: 10px;
+  color: var(--color-blue-icon);
+  font-weight: 700;
+  font-size: 16px; */
+  width: 6vw;
+  height: 3vw;
+}
+
+
+@media screen and (min-width:300px) and (max-width:500px){
+  .body {
+    flex-direction: column;
+  }
+
+  .figure,
+  .mainClass {
+    width: 100%;
+  }
+
+  .formClass label {
+    font-size: 14px;
+  }
+
+  .figure {
+    height: 150vw;
+  }
+
+  .initial__word {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5vw;
+  }
+
+  .user__input {
+    display: flex;
+    column-gap: 3vw;
+  }
+
+  .submit__button > button {
+    height: 10vw;
+    width: 20vw;
+  }
+}
+
+
+/* mobile */
+@media screen and (min-width:500px) and (max-width:769px) {
+  .body {
+    flex-direction: column;
+  }
+
+  .figure,
+  .mainClass {
+    width: 100%;
+  }
+
+  .formClass label {
+    font-size: 14px;
+  }
+
+  .figure {
+    height: 125vw;
+  }
+
+  .initial__word {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5vw;
+  }
+
+  .user__input {
+    display: flex;
+    column-gap: 3vw;
+  }
+
+
+  .submit__button > button {
+    width: 20vw;
+    height: 7vw;
+  }
+
+}
+
+/* tablet */
+@media screen and (min-width:770px) and (max-width: 1023px) {
+
+  .formClass label {
+    font-size: 16px;
+  }
+
+
+  .initial__word {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5vw;
+  }
+
+  .user__input {
+    display: flex;
+    column-gap: 3vw;
+  }
+
+
+  .submit__button > button {
+    width: 12vw;
+    height: 5vw;
+  }
+
+}
