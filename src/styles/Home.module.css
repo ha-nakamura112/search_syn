@@ -209,9 +209,7 @@
 .adjust__synonym li {
   letter-spacing: .8px;
 }
-
-/* mobile */
-@media screen and (max-width:767px) {
+@media screen and (min-width:300px) and (max-width:499px){
   .body {
     flex-direction: column;
   }
@@ -226,7 +224,45 @@
   }
 
   .figure {
-    height: 75vh;
+    height: 150vw;
+  }
+
+  .initial__word {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5vw;
+  }
+
+  .user__input {
+    display: flex;
+    column-gap: 3vw;
+  }
+
+
+  .submit__button > button {
+    height: 4vh;
+    width: 20vw;
+  }
+}
+
+
+/* mobile */
+@media screen and (min-width:500px) and (max-width:767px) {
+  .body {
+    flex-direction: column;
+  }
+
+  .figure,
+  .mainClass {
+    width: 100%;
+  }
+
+  .formClass label {
+    font-size: 14px;
+  }
+
+  .figure {
+    height: 120vw;
   }
 
   .initial__word {
