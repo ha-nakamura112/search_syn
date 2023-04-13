@@ -128,17 +128,21 @@ function Home({ server }) {
                 })}
               </select>
             </div>
-            <div>
-              <select onChange={(e)=>setAdv(e.target.value)}>
-                <option value='too'>Too</option>
-                <option value='very'>Very</option>
-              </select>
-              <input placeholder='write your adjective' type='text' onChange={(e)=>setUserInput(e.target.value)}/>
-              { sendFlag ?
-              <button type='submit'>Convert</button>
-              :
-              <h2>Converting...</h2>
-               }
+            <div className={  style.initial__word}>
+              <div className={ style.user__input }>
+                <select onChange={(e)=>setAdv(e.target.value)}>
+                  <option value='too'>Too</option>
+                  <option value='very'>Very</option>
+                </select>
+                <input placeholder='write your adjective' type='text' onChange={(e)=>setUserInput(e.target.value)}/>
+              </div>
+              <div className={ style.submit__button }>
+                { sendFlag ?
+                <button type='submit'>Convert</button>
+                :
+                <h2>Converting...</h2>
+                }
+              </div>
             </div>
             <p>{msg}</p>
             <details>

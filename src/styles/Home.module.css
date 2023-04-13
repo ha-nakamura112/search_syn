@@ -215,8 +215,31 @@
     width: 100%;
   }
 
+  .formClass label {
+    font-size: 14px;
+  }
+
   .figure {
-    height: 65vh;
+    height: 75vh;
+  }
+
+  .initial__word {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5vw;
+  }
+
+  .user__input {
+    display: flex;
+    column-gap: 3vw;
+  }
+
+  .submit__button  {
+    width: 70vw;
+  }
+
+  .submit__button > button {
+    height: 3vh;
   }
 
 }
