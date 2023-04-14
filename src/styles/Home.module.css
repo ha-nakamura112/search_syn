@@ -36,16 +36,35 @@
     color: var(--color-icon-text);
   }
 
-  .formClass label {
-    font-size: 14px;
+  .examp__icon {
+    font-size: 22px;
   }
-
+  
   .formClass > div {
     display: flex;
   }
 
-  .formClass > div:first-child,
-  .formClass > div:nth-child(2){
+  .formClass > div:first-child {
+    font-size: 16px;
+    font-weight: 700;
+    background-color: var(--color-icon-text);
+    color: var(--color-blue-icon);
+    padding: 2%;
+    border-radius: 10px;
+    width: 15vw;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5%;
+  }
+
+  .formClass label {
+    font-size: 14px;
+  }
+
+
+  .formClass > div:nth-child(2),
+  .formClass > div:nth-child(3){
     column-gap: 5%;
     padding-bottom: 2%;
     align-items: center;
@@ -99,6 +118,7 @@
     width: 20vw;
   }
 
+  .formClass > div:first-child:hover ,
   .formClass select:hover,
   .formClass button:hover {
     transition: .3s;

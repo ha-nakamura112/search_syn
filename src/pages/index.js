@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import style from "../styles/Home.module.css";
 import Image from 'next/image';
+import { CiLocationArrow1 } from 'react-icons/ci';
 
 
 export async function getServerSideProps({ req }) {
@@ -28,6 +29,7 @@ const fetchDatas = async ( server ) => {
 };
 
 function Home({ server }) {
+  const myRef = useRef(null);
 
   const [ number, setNumber ] = useState('');
   const [ language, setLanguage ] = useState('');
@@ -48,6 +50,12 @@ function Home({ server }) {
     }
     gettingData();
   },[]);
+
+  const scrollToRef = () => window.scrollTo({
+    top: myRef.current.offsetTop,
+    behavior: "smooth"
+  })
+
 
   const runPrompt = async (e) => {
     e.preventDefault();
@@ -104,6 +112,9 @@ function Home({ server }) {
       />
         <p>Let&apos;s find new vocabulary</p>
         <form onSubmit={(e)=>runPrompt(e)} className={ style.formClass }>
+            <div onClick={scrollToRef}>Examples?
+              <CiLocationArrow1 className={ style.examp__icon }/>
+            </div>
             <div>
               <label htmlFor='language'>
                 Which language in answer?
@@ -156,7 +167,7 @@ function Home({ server }) {
             </details>
         </form>
       </figure>
-      <div className={ style.mainClass }>
+      <div ref={myRef} className={ style.mainClass }>
         
         <div className={ style.synonyms }>
         { parsedResponse ? (
