@@ -63,7 +63,6 @@ function Home({ server }) {
     if(userInput !== null && userInput !== ''){
       setSendFlag(false)
       setMsg(null);
-      setCssFlag(true)
       const sendData = 
         {
           'word': userInput,
@@ -91,6 +90,8 @@ function Home({ server }) {
         setparsedResponse(data);
         if(data.length > 4){
           setCssFlag(false);
+        }else{
+          setCssFlag(true)
         }
         setMsg(null);
         setSendFlag(true);
