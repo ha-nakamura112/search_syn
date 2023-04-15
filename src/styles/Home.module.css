@@ -52,7 +52,7 @@
     color: var(--color-blue-icon);
     padding: 3%;
     border-radius: 10px;
-    width: 30vw;
+    width: 50vw;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -262,6 +262,10 @@
   .formClass input,
   .formClass select {
     height: 4vw;
+  }
+
+  .formClass > div:first-child {
+    display: none;
   }
 
   .submit__button > button {
