@@ -35,7 +35,7 @@ function Home({ server }) {
   const [ number, setNumber ] = useState('');
   const [ language, setLanguage ] = useState('');
   const [ num, setNum ] = useState(1)
-  const [ lang, setLang ] = useState('Japanese')
+  const [ lang, setLang ] = useState('English')
   const [ userInput, setUserInput] = useState(null);
   const [ adv, setAdv ] = useState('too');
   const [ msg, setMsg ] = useState(null);
