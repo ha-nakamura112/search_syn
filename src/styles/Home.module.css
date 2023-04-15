@@ -36,12 +36,13 @@
     color: var(--color-icon-text);
   }
 
-  .examp__icon {
-    font-size: 22px;
-  }
   
   .formClass > div {
     display: flex;
+  }
+
+  .examp__icon {
+    font-size: 22px;
   }
 
   .formClass > div:first-child {
@@ -49,9 +50,9 @@
     font-weight: 700;
     background-color: var(--color-icon-text);
     color: var(--color-blue-icon);
-    padding: 2%;
+    padding: 3%;
     border-radius: 10px;
-    width: 15vw;
+    width: 30vw;
     text-align: center;
     align-items: center;
     justify-content: center;

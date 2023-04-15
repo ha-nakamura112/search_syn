@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import style from "../styles/Home.module.css";
 import Image from 'next/image';
-import { CiLocationArrow1 } from 'react-icons/ci';
+import { IoIosArrowDropright } from 'react-icons/io';
+// import { CiLocationArrow1 } from 'react-icons/ci';
 
 
 export async function getServerSideProps({ req }) {
@@ -113,7 +114,7 @@ function Home({ server }) {
         <p>Let&apos;s find new vocabulary</p>
         <form onSubmit={(e)=>runPrompt(e)} className={ style.formClass }>
             <div onClick={scrollToRef}>Examples?
-              <CiLocationArrow1 className={ style.examp__icon }/>
+              <IoIosArrowDropright className={ style.examp__icon }/>
             </div>
             <div>
               <label htmlFor='language'>
