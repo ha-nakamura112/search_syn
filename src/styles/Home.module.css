@@ -171,7 +171,15 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    row-gap: 1vh;
+    row-gap: 3vh;
+  }
+
+  .exampTitle h3 {
+    font-weight: 400;
+  }
+
+  .exampTitle span {
+    font-weight: 700;
   }
 
   .synonym {

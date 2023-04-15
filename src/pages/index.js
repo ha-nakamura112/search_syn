@@ -196,8 +196,8 @@ function Home({ server }) {
           :
           <div className={ style.synonyms }>
             <div className={ style.exampTitle }>
-              <h4>Synonyms</h4>
-              <p>Examples: Too hot</p>
+              <h3>Synonyms</h3>
+              <p><span>Examples:</span> Too hot</p>
             </div>
             <div className={ style.synonym }>
                    <h2>Scorching</h2>
