@@ -157,6 +157,7 @@
     width: 100%;
     background-color: var(--color-icon-text);
     height: 100vh;
+    color: var(--color-regular-text);
   }
 
   .synonyms {
