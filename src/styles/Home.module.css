@@ -263,7 +263,7 @@
 
   .formClass input,
   .formClass select {
-    height: 4vw;
+    height: 3.5vw;
   }
 
   .formClass > div:first-child {
@@ -271,8 +271,8 @@
   }
 
   .submit__button > button {
-    height: 4.5vw;
-    width: 15vw;
+    height: 4vw;
+    width: 13vw;
   }
 
 }
@@ -289,7 +289,7 @@
 
   .formClass input,
   .formClass select {
-    height: 3vw;
+    height: 2.8vw;
   }
 
   .initial__word {
@@ -297,8 +297,8 @@
   }
 
   .submit__button > button {
-    height: 3.5vw;
-    width: 10vw;
+    height: 3.3vw;
+    width: 9vw;
   }
 
 
